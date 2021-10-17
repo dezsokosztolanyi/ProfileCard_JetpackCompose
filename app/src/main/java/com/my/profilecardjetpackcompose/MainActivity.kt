@@ -113,10 +113,16 @@ fun ProfileContent(userName : String, onlineStatus : Boolean) {
             .fillMaxWidth()
     ) {
 
-        Text(
-            text = userName,
-            style = MaterialTheme.typography.h5
-        )
+        CompositionLocalProvider(LocalContentAlpha
+                provides
+                if (onlineStatus) 1f else ContentAlpha.medium) {
+            Text(
+                text = userName,
+                style = MaterialTheme.typography.h5
+            )
+        }
+
+
 
         CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
             Text(
